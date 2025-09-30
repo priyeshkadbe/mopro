@@ -303,8 +303,7 @@ jobs:
             disable-animations: true
             emulator-options: "-no-snapshot -no-boot-anim -no-window -gpu swiftshader_indirect -memory 2048 -cores 1"
             script: |
-              cd ${{ runner.temp }}/mopro-example-${{ matrix.adapter }}/android
-              ls
+              cd ${{ runner.temp }}/mopro-example-${{ matrix.adapter }}/android && ls
               # Capitalize adapter (circom -> Circom, halo2 -> Halo2, noir -> Noir)
               ADAPTER="${{ matrix.adapter }}"
               FIRST=$(printf '%s' "$ADAPTER" | cut -c1 | tr '[:lower:]' '[:upper:]')
