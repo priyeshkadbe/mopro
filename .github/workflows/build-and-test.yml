@@ -302,18 +302,7 @@ jobs:
             arch: x86_64
             disable-animations: true
             emulator-options: "-no-snapshot -no-boot-anim -no-window -gpu swiftshader_indirect -memory 2048 -cores 1"
-            script: |
-              cd ${{ runner.temp }}/mopro-example-${{ matrix.adapter }}/android && ls
-              # Capitalize adapter (circom -> Circom, halo2 -> Halo2, noir -> Noir)
-              ADAPTER="${{ matrix.adapter }}"
-              FIRST=$(printf '%s' "$ADAPTER" | cut -c1 | tr '[:lower:]' '[:upper:]')
-              REST=$(printf '%s' "$ADAPTER" | cut -c2-)
-              ADAPTER_UPPER="$FIRST$REST"
-
-              echo "Running test test${ADAPTER_UPPER}ButtonClick"
-
-              chmod +x gradlew
-              ./gradlew connectedAndroidTest -Pandroid.testInstrumentationRunnerArguments.class=com.example.moproapp.ExampleInstrumentedTest#test${ADAPTER_UPPER}ButtonClick
+            script: cd ${{ runner.temp }}/mopro-example-${{ matrix.adapter }}/android && ./gradlew connectedAndroidTest
 
         - name: Upload test report
           if: failure()
