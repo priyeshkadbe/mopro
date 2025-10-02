@@ -302,7 +302,7 @@ jobs:
             arch: x86_64
             disable-animations: true
             emulator-options: "-no-snapshot -no-boot-anim -no-window -gpu swiftshader_indirect -memory 2048 -cores 1"
-            script: cd ${{ runner.temp }}/mopro-example-${{ matrix.adapter }}/android && ./gradlew connectedAndroidTest
+            script: cd ${{ runner.temp }}/mopro-example-${{ matrix.adapter }}/android && ./gradlew connectedAndroidTest -Pandroid.testInstrumentationRunnerArguments.class=com.example.moproapp.ExampleInstrumentedTest#${{ matrix.adapter }}ButtonClick
 
         - name: Upload test report
           if: failure()
