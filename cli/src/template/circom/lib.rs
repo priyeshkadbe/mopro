@@ -25,9 +25,9 @@ mod circom_tests {
     fn test_multiplier2() {
         let circuit_inputs = "{\"a\": 2, \"b\": 3}".to_string();
         let result =
-            generate_circom_proof(ZKEY_PATH.to_string(), circuit_inputs, ProofLib::Arkworks);
+            generate_circom_proof(ZKEY_PATH.to_string(), circuit_inputs, ProofLib::Rapidsnark);
         assert!(result.is_ok());
         let proof = result.unwrap();
-        assert!(verify_circom_proof(ZKEY_PATH.to_string(), proof, ProofLib::Arkworks).is_ok());
+        assert!(verify_circom_proof(ZKEY_PATH.to_string(), proof, ProofLib::Rapidsnark).is_ok());
     }
 }

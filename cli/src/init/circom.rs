@@ -11,7 +11,7 @@ impl ProvingSystem for Circom {
     const ADAPTER: Adapter = Adapter::Circom;
 
     const DEPENDENCIES: &'static str = r#"
-circom-prover = { git = "https://github.com/zkmopro/mopro.git" }
+circom-prover = { version = "0.1", features = ["rapidsnark"] }
 rust-witness  = "0.1"
 num-bigint    = "0.4.0"
     "#;
